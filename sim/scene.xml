@@ -1,0 +1,49 @@
+<mujoco model="second look site">
+  <include file="assets/go2/go2.xml"/>
+  <compiler texturedir="generated"/>
+  <visual>
+    <headlight diffuse="0.55 0.55 0.55" ambient="0.35 0.35 0.35" specular="0 0 0"/>
+    <global offwidth="1280" offheight="720"/>
+  </visual>
+  <asset>
+    <texture name="sand" type="2d" builtin="flat" mark="random" random="0.15" rgb1="0.62 0.57 0.48"
+      markrgb="0.48 0.44 0.37" width="1024" height="1024"/>
+    <material name="sand" texture="sand" texuniform="true" texrepeat="4 4"/>
+    <texture name="tex_A" type="cube" file="label_A.png"/>
+    <texture name="tex_B" type="cube" file="label_B.png"/>
+    <texture name="tex_C" type="cube" file="label_C.png"/>
+    <material name="label_A" texture="tex_A"/>
+    <material name="label_B" texture="tex_B"/>
+    <material name="label_C" texture="tex_C"/>
+  </asset>
+  <worldbody>
+    <light pos="1.3 0.6 4" dir="0 0 -1" directional="true" diffuse="0.5 0.5 0.5"/>
+    <geom name="floor" type="plane" size="14 14 0.1" material="sand"/>
+    <geom type="box" pos="1.3 3.6 0.8" size="12 0.05 0.8" rgba="0.7 0.72 0.75 1"/>
+    <geom type="box" pos="1.3 -2.6 0.8" size="12 0.05 0.8" rgba="0.68 0.7 0.72 1"/>
+
+    <!-- Station A: landing pad, fixed scene -->
+    <geom type="box" pos="0.2 -1.48 0.16" size="0.16 0.02 0.16" euler="0 0 3.14159" material="label_A"/>
+    <geom type="box" pos="0.2 -1.52 0.16" size="0.16 0.02 0.16" material="label_A"/>
+    <geom type="cylinder" pos="0.8 -1.55 0.03" size="0.4 0.03" rgba="0.3 0.3 0.33 1"/>
+    <!-- Station B: tower scene -->
+    <geom type="box" pos="0.8 2.6 0.16" size="0.16 0.16 0.16" material="label_B"/>
+    <body name="tower_b" mocap="true" pos="1.55 2.7 0">
+      <geom type="box" pos="0 0 0.02" size="0.14 0.14 0.02" rgba="0.75 0.75 0.75 1"/>
+      <geom type="cylinder" pos="0 0 0.3" size="0.03 0.3" rgba="0.85 0.85 0.85 1"/>
+      <geom type="box" pos="0 0 0.62" size="0.2 0.02 0.14" euler="0.4 0 0" rgba="0.08 0.12 0.35 1"/>
+    </body>
+    <body name="rock_b" mocap="true" pos="1.1 2.0 -5">
+      <geom type="ellipsoid" size="0.2 0.16 0.14" pos="0 0 0.12" rgba="0.36 0.34 0.32 1"/>
+    </body>
+    <!-- Station C: block depot -->
+    <geom type="box" pos="1.55 -1.48 0.16" size="0.16 0.02 0.16" euler="0 0 3.14159" material="label_C"/>
+    <geom type="box" pos="1.55 -1.52 0.16" size="0.16 0.02 0.16" material="label_C"/>
+    <geom type="box" pos="2.2 -1.5 0.08" size="0.13 0.13 0.08" rgba="0.82 0.42 0.12 1"/>
+    <geom type="box" pos="2.5 -1.5 0.08" size="0.13 0.13 0.08" rgba="0.82 0.42 0.12 1"/>
+    <body name="block_c" mocap="true" pos="2.35 -1.5 0.24">
+      <geom type="box" size="0.13 0.13 0.08" rgba="0.15 0.45 0.75 1"/>
+    </body>
+    <camera name="overview" pos="1.3 -2.3 2.6" xyaxes="1 0 0 0 0.8 0.6" fovy="70"/>
+  </worldbody>
+</mujoco>

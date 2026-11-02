@@ -1,0 +1,54 @@
+# All distances in metres, angles in radians, in the mission frame:
+# origin = the start mark, +x = the direction Scout faces at the start.
+robot:
+  interface: enp3s0
+  state_timeout_s: 0.5
+limits:
+  max_vx: 0.30        # hard clamp in every backend
+  max_vy: 0.0
+  max_wz: 0.60
+  control_dt_s: 0.1
+  leg_timeout_s: 30
+  mission_timeout_s: 240
+  max_steps: 3000
+control:
+  pos_tol: 0.10
+  yaw_tol: 0.08
+  turn_first_rad: 0.35
+  k_pos: 0.8
+  k_yaw: 1.2
+  settle_s: 1.5
+camera:
+  fx: 565             # estimate from the sim camera, measure on the Go2
+align:                # visual re-alignment at stops, used only with --realign
+  iterations: 3
+  max_turn: 0.4       # a larger estimate is rejected, not clipped
+  min_inliers: 20
+  max_scale_change: 0.25
+  max_step: 0.3
+  speed: 0.15
+  view_distance: 1.5
+  yaw_tol: 0.02
+  move_tol: 0.03
+stations:             # visited in this order, then back to start
+  - {id: A, name: sandbox, x: 0.50, y: 0.00, yaw: -2.2}
+  - {id: B, name: rock, x: 1.80, y: 0.20, yaw: 0.6}
+  - {id: C, name: solar panel, x: 2.00, y: -0.10, yaw: -0.35}
+vlm:
+  model: gemini-robotics-er-2-preview
+  temperature: 0.1
+  thinking_budget: 1024
+  image_width: 800
+  retries: 0          # free tier allows 20 requests per day
+  min_call_gap_s: 13  # free tier allows 5 requests per minute
+  # Ollama only. One composite picture: the two-image form failed its controls.
+  side_by_side: true
+  overlap: true       # warp to the reference and grey out unshared area, see docs/VLM_EVAL.md
+  ollama_width: 1600
+  rate_limit_wait_s: 30
+sim:
+  seed: 0
+  slip: 0.04          # true speed = commanded * (1 - slip)
+  yaw_gain_error: 0.03
+  yaw_rate_bias: 0.008
+  odom_noise: 0.002

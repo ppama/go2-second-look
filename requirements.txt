@@ -1,0 +1,15 @@
+mujoco
+numpy
+pyyaml
+pillow
+opencv-python-headless
+google-genai
+pytest
+trimesh
+fast-simplification
+scipy
+mcap
+mcap-ros2-support
+torch
+torchvision
+edge-tts  # video narration only

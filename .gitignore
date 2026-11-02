@@ -1,0 +1,17 @@
+.venv/
+third_party_sdk/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.env
+*.env
+logs/
+output/
+sim/generated/
+sim/scan_*.xml
+MUJOCO_LOG.TXT
+.venv_splat/
+check_frame.jpg
+go2_lab_export/
+go2_lab_export.tar
+go2_run*.mp4

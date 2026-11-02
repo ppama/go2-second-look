@@ -1,0 +1,32 @@
+<mujoco model="change detector training">
+  <visual>
+    <headlight diffuse="0.5 0.5 0.5" ambient="0.35 0.35 0.35" specular="0 0 0"/>
+    <global offwidth="640" offheight="360"/>
+  </visual>
+  <asset>
+    <texture name="ground" type="2d" builtin="flat" mark="random" random="0.2" rgb1="1 1 1" markrgb="0.72 0.72 0.72" width="1024" height="1024"/>
+    <material name="ground" texture="ground" texuniform="true" texrepeat="3 3"/>
+  </asset>
+  <worldbody>
+    <light name="sun" pos="1 1 4" dir="0 0 -1" directional="true" diffuse="0.5 0.5 0.5"/>
+    <geom name="floor" type="plane" size="14 14 0.1" material="ground"/>
+    <geom name="wall" type="box" pos="0 4.5 1" size="14 0.05 1" rgba="0.7 0.7 0.7 1"/>
+    <body name="rig" mocap="true" pos="0 0 0.33">
+      <camera name="cam" pos="0 0 0" xyaxes="1 0 0 0 0.17 0.98" fovy="65"/>
+    </body>
+    <body name="o0" mocap="true"><geom name="g0" type="box" size="0.1 0.1 0.1"/></body>
+    <body name="o1" mocap="true"><geom name="g1" type="box" size="0.1 0.1 0.1"/></body>
+    <body name="o2" mocap="true"><geom name="g2" type="box" size="0.1 0.1 0.1"/></body>
+    <body name="o3" mocap="true"><geom name="g3" type="box" size="0.1 0.1 0.1"/></body>
+    <body name="o4" mocap="true"><geom name="g4" type="cylinder" size="0.1 0.1"/></body>
+    <body name="o5" mocap="true"><geom name="g5" type="cylinder" size="0.1 0.1"/></body>
+    <body name="o6" mocap="true"><geom name="g6" type="cylinder" size="0.1 0.1"/></body>
+    <body name="o7" mocap="true"><geom name="g7" type="ellipsoid" size="0.1 0.1 0.1"/></body>
+    <body name="o8" mocap="true"><geom name="g8" type="ellipsoid" size="0.1 0.1 0.1"/></body>
+    <body name="o9" mocap="true"><geom name="g9" type="ellipsoid" size="0.1 0.1 0.1"/></body>
+    <body name="t0" mocap="true"><geom name="tr0" type="cylinder" size="0.06 0.002" rgba="0 0 0 0.25"/></body>
+    <body name="t1" mocap="true"><geom name="tr1" type="cylinder" size="0.06 0.002" rgba="0 0 0 0.25"/></body>
+    <body name="t2" mocap="true"><geom name="tr2" type="cylinder" size="0.06 0.002" rgba="0 0 0 0.25"/></body>
+    <body name="t3" mocap="true"><geom name="tr3" type="cylinder" size="0.06 0.002" rgba="0 0 0 0.25"/></body>
+  </worldbody>
+</mujoco>
